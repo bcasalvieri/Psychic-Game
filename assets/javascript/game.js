@@ -20,7 +20,7 @@ var $losses;
 var $lettersGuessed;
 
 // Create a function to start new game
-window.onload = function newGame() {
+function newGame() {
   
   // Computer picks letter
   var randomIndex = Math.floor(Math.random() * computerChoices.length);
@@ -82,3 +82,5 @@ document.onkeyup = function(event) {
   };
   
 };
+
+newGame();
