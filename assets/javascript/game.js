@@ -9,27 +9,26 @@
 // Create variables
 var wins = 0;
 var losses = 0;
-var guessesLeft = 10;
+var guessesLeft;
 var alphabet = "abcdefghijklmnopqrstuvwxyz";
 var computerChoices = alphabet.split("");
 var computerGuess;
 var lettersGuessed = [];
+var $guessesLeft;
+var $wins;
+var $losses;
+var $lettersGuessed;
 
 // Create a function to start new game
-function newGame() {
+window.onload = function newGame() {
   
   // Computer picks letter
   var randomIndex = Math.floor(Math.random() * computerChoices.length);
-  
   computerGuess = computerChoices[randomIndex];
 
-  console.log(computerGuess);
-
-  // Reset Guesses Left
+  // Reset guessesLeft & print to document
   guessesLeft = 10;
-
-  // Print to document
-  var guesses
+  document.getElementById("guessesLeft").innerHTML = guessesLeft;
 
   // Reset Guessed Letters array
   lettersGuessed = [];
@@ -49,8 +48,9 @@ document.onkeyup = function(event) {
   // Compare userGuess with computerGuess
   if (userGuess === computerGuess) {
 
-    // Win
-    win++;
+    // Win and print to document
+    wins++;
+    document.getElementById("wins").innerHTML = wins;
 
     // New Game
     newGame();
@@ -60,9 +60,10 @@ document.onkeyup = function(event) {
 
     // Minus one guess
     guessesLeft = (guessesLeft - 1);
+    document.getElementById("guessesLeft").innerHTML = guessesLeft;
 
     // Add letter guessed to lettersGuessed array
-    lettersGuessed.push(userGuess);
+    
 
     // Print lettersGuessed array to document
 
@@ -73,6 +74,7 @@ document.onkeyup = function(event) {
     
     // Lose
     losses++;
+    document.getElementById("losses").innerHTML = losses;
 
     //New Game
     newGame();
