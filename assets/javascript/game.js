@@ -1,11 +1,3 @@
-// NOTES:
-  // Can you add an OR into the for loop? --> loop ends when guessesLeft = 0 or userGuess === computerGuess
-  // Push userGuess to guessedLetter array --> guessedLetter.push(userGuess)
-  // Print guessedLetter array to the HTML document --> drink list activity - jQuery activity 2
-  // New game function!!! Resets computerGuess, guessesLeft, and guessedLetters
-
-
-
 // Create variables
 var wins = 0;
 var losses = 0;
@@ -14,73 +6,90 @@ var alphabet = "abcdefghijklmnopqrstuvwxyz";
 var computerChoices = alphabet.split("");
 var computerGuess;
 var lettersGuessed = [];
-var $guessesLeft;
-var $wins;
-var $losses;
-var $lettersGuessed;
+var gameRunning = false;
+
 
 // Create a function to start new game
 function newGame() {
+
+  gameRunning = true;
   
   // Computer picks letter
   var randomIndex = Math.floor(Math.random() * computerChoices.length);
   computerGuess = computerChoices[randomIndex];
 
-  // Reset guessesLeft & print to document
-  guessesLeft = 10;
-  document.getElementById("guessesLeft").innerHTML = guessesLeft;
+  // Reset userGuess and write to document
+  userGuess = "";
+  document.getElementById("userGuess").innerHTML = userGuess;
 
-  // Reset Guessed Letters array
+  // Reset guessesLeft and write to document
+  guessesLeft = 10;
+  document.getElementById("guessesLeft").innerText = guessesLeft;
+
+  // Reset Guessed Letters array and write to document
   lettersGuessed = [];
 
-  // Print to document
+  document.getElementById("guessedLetters").innerText = lettersGuessed;
 
-
-}
+};
 
 
 // Create a function to play the game beginning with user key press
 document.onkeyup = function(event) {
 
+  if (!gameRunning || !computerChoices.includes(event.key)) {
+    return false;
+  };
+
   // Capture key pressed and store in variable
   var userGuess = event.key;
+
+  document.getElementById("userGuess").innerText = userGuess;
 
   // Compare userGuess with computerGuess
   if (userGuess === computerGuess) {
 
     // Win and print to document
     wins++;
-    document.getElementById("wins").innerHTML = wins;
+    document.getElementById("wins").innerText = wins;
 
-    // New Game
-    newGame();
-  }
-
-  else {
-
-    // Minus one guess
-    guessesLeft = (guessesLeft - 1);
-    document.getElementById("guessesLeft").innerHTML = guessesLeft;
-
-    // Add letter guessed to lettersGuessed array
+    // Alert user they won
+    alert(`Congrats, you won!`)
     
-
-    // Print lettersGuessed array to document
-
+    // Turn game off
+    gameRunning = false;
+  }
+  
+  else {
+    
+    // Minus one guess
+    guessesLeft--;
+    document.getElementById("guessesLeft").innerText = guessesLeft;
+    
+    // Add letter guessed to lettersGuessed array
+    lettersGuessed.push(` ${userGuess}`);
+    
+    
+    // Write lettersGuessed array to document
+    document.getElementById("guessedLetters").innerText = lettersGuessed;
+    
   };
-
+  
   // Create
   if (guessesLeft <= 0) {
     
     // Lose
     losses++;
-    document.getElementById("losses").innerHTML = losses;
+    document.getElementById("losses").innerText = losses;
+    
+    // Alert user they lost
+    alert(`Bummer, you lost!`)
 
-    //New Game
-    newGame();
+    // Turn game off
+    gameRunning = false;
 
   };
   
 };
 
-newGame();
+document.getElementById("newGame").addEventListener("click", newGame);
