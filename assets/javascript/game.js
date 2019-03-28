@@ -1,43 +1,82 @@
+// NOTES:
+  // Can you add an OR into the for loop? --> loop ends when guessesLeft = 0 or userGuess === computerGuess
+  // Push userGuess to guessedLetter array --> guessedLetter.push(userGuess)
+  // Print guessedLetter array to the HTML document --> drink list activity - jQuery activity 2
+  // New game function!!! Resets computerGuess, guessesLeft, and guessedLetters
+
+
+
 // Create variables
 var wins = 0;
 var losses = 0;
 var guessesLeft = 10;
 var alphabet = "abcdefghijklmnopqrstuvwxyz";
 var computerChoices = alphabet.split("");
+var computerGuess;
+var lettersGuessed = [];
 
-// Tell browswer that whenever user releases a key on the keyboard, run this function
+// Create a function to start new game
+function newGame() {
+  
+  // Computer picks letter
+  var randomIndex = Math.floor(Math.random() * computerChoices.length);
+  
+  computerGuess = computerChoices[randomIndex];
+
+  console.log(computerGuess);
+
+  // Reset Guesses Left
+  guessesLeft = 10;
+
+  // Print to document
+  var guesses
+
+  // Reset Guessed Letters array
+  lettersGuessed = [];
+
+  // Print to document
+
+
+}
+
+
+// Create a function to play the game beginning with user key press
 document.onkeyup = function(event) {
 
   // Capture key pressed and store in variable
   var userGuess = event.key;
 
-  // Generate a computer guess by selecting one of the choices in array above at random
-  var randomIndex = Math.floor(Math.random() * computerChoices.length);
-
-  var computerGuess = computerChoices[randomIndex];
-
   // Compare userGuess with computerGuess
   if (userGuess === computerGuess) {
+
     // Win
     win++;
+
+    // New Game
+    newGame();
   }
+
   else {
-    // Minus one life
+
+    // Minus one guess
     guessesLeft = (guessesLeft - 1);
-  }
 
-  // Guesses Left
+    // Add letter guessed to lettersGuessed array
+    lettersGuessed.push(userGuess);
 
-    // If guesses left > 0, guess again
+    // Print lettersGuessed array to document
 
-    // If guesses = 0, user loses
+  };
+
+  // Create
+  if (guessesLeft <= 0) {
+    
+    // Lose
+    losses++;
+
+    //New Game
+    newGame();
+
+  };
   
 };
-
-// Computer picks letter
-// User presses letter
-  // If letter is same as Computer, user wins
-  // If letter is not the same as Computer
-    // Guesses left -1
-    // When guesses left = 0, user loses
-// Game resets
