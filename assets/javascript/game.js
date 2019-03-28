@@ -28,9 +28,9 @@ function newGame() {
 
   // Reset Guessed Letters array and write to document
   lettersGuessed = [];
-
   document.getElementById("guessedLetters").innerText = lettersGuessed;
 
+  document.getElementById("results").innerText = "";
 };
 
 
@@ -52,9 +52,9 @@ document.onkeyup = function(event) {
     // Win and print to document
     wins++;
     document.getElementById("wins").innerText = wins;
-
+    
     // Alert user they won
-    alert(`Congrats, you won!`)
+    document.getElementById("results").innerText = `Congrats, you won!`;
     
     // Turn game off
     gameRunning = false;
@@ -83,11 +83,11 @@ document.onkeyup = function(event) {
     document.getElementById("losses").innerText = losses;
     
     // Alert user they lost
-    alert(`Bummer, you lost!`)
-
+    document.getElementById("results").innerText = `Bummer, you lost!`;
+    
     // Turn game off
     gameRunning = false;
-
+    
   };
   
 };
