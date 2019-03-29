@@ -87,7 +87,7 @@ document.onkeyup = function(event) {
     document.getElementById("losses").innerText = losses;
     
     // Alert user they lost
-    document.getElementById("results").innerText = `Are you sure you're pyschic, ${userName}! The letter was: ${computerGuess}.`;
+    document.getElementById("results").innerText = `Are you sure you're psychic, ${userName}! The letter was: ${computerGuess}.`;
     
     // Turn game off
     gameRunning = false;
