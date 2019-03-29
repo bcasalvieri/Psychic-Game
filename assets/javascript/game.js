@@ -83,7 +83,7 @@ document.onkeyup = function(event) {
     document.getElementById("losses").innerText = losses;
     
     // Alert user they lost
-    document.getElementById("results").innerText = `Bummer, you lost!`;
+    document.getElementById("results").innerText = `Bummer, you lost! The computer's letter was: ${computerGuess}.`;
     
     // Turn game off
     gameRunning = false;
