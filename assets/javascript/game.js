@@ -7,7 +7,11 @@ var computerChoices = alphabet.split("");
 var computerGuess;
 var lettersGuessed = [];
 var gameRunning = false;
+var userName;
 
+window.onload = function() {
+  userName = prompt(`What is your name?`);
+};
 
 // Create a function to start new game
 function newGame() {
@@ -54,7 +58,7 @@ document.onkeyup = function(event) {
     document.getElementById("wins").innerText = wins;
     
     // Alert user they won
-    document.getElementById("results").innerText = `Congrats, you won!`;
+    document.getElementById("results").innerText = `Your psychic powers are strong, ${userName}!`;
     
     // Turn game off
     gameRunning = false;
@@ -83,7 +87,7 @@ document.onkeyup = function(event) {
     document.getElementById("losses").innerText = losses;
     
     // Alert user they lost
-    document.getElementById("results").innerText = `Bummer, you lost! The computer's letter was: ${computerGuess}.`;
+    document.getElementById("results").innerText = `Are you sure you're pyschic, ${userName}! The letter was: ${computerGuess}.`;
     
     // Turn game off
     gameRunning = false;
