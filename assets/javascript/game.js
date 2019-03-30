@@ -73,7 +73,6 @@ document.onkeyup = function(event) {
     // Add letter guessed to lettersGuessed array
     lettersGuessed.push(` ${userGuess}`);
     
-    
     // Write lettersGuessed array to document
     document.getElementById("guessedLetters").innerText = lettersGuessed;
     

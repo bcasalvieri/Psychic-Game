@@ -37,7 +37,7 @@ h3 {
   padding-right: 50px;
 }
 
-@media (max-width: 992px) {
+@media only screen and (max-width: 992px) {
   .btn {
       width:100%;
   }
@@ -45,4 +45,11 @@ h3 {
   .container {
     width: 95%;
   }
+
+}
+
+@media only screen and (min-width: 992px) {
+  .separator {
+        display: none;
+      }
 }
