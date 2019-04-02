@@ -12,6 +12,3 @@ The user has 10 attempts to guess a letter the computer randomly selects.
 - CSS
 - Bootstrap 4
 - JavaScript
-
-## Needed Improvements
-- Prevent the user from selecting a letter twice
